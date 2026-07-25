@@ -264,6 +264,7 @@
         let filteredData = [];
         let barChartInstance = null;
         let scatterChartInstance = null;
+        let metricsAnimId = null; // To prevent overlapping animations
         
         const API_URL = 'https://data.gov.sg/api/action/datastore_search?resource_id=d_8b84c4ee58e3cfc0ece0d773c8ca6abc&limit=500';
 
@@ -342,19 +343,21 @@
             
             // Animate number count (simple version)
             let start = 0;
-            const duration = 1000;
+            const duration = 500; // Faster animation (was 1000)
             const increment = median / (duration / 16);
+            
+            if (metricsAnimId) cancelAnimationFrame(metricsAnimId);
             
             const animate = () => {
                 start += increment;
                 if(start < median) {
                     medianPriceDisplay.textContent = formatter.format(start);
-                    requestAnimationFrame(animate);
+                    metricsAnimId = requestAnimationFrame(animate);
                 } else {
                     medianPriceDisplay.textContent = formatter.format(median);
                 }
             };
-            requestAnimationFrame(animate);
+            metricsAnimId = requestAnimationFrame(animate);
         }
 
         // --- Table Rendering ---
@@ -439,7 +442,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     animation: {
-                        duration: 1500,
+                        duration: 500, // Faster animation (was 1500)
                         easing: 'easeOutQuart'
                     },
                     plugins: { 
@@ -494,7 +497,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     animation: {
-                        duration: 1500,
+                        duration: 500, // Faster animation (was 1500)
                         easing: 'easeOutBounce'
                     },
                     plugins: { 
