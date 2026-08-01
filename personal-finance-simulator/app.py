@@ -39,7 +39,7 @@ total_cpf = employee_cpf + employer_cpf
 # --- DYNAMIC AI ADVISOR LOGIC ---
 st.markdown("### 🤖 AI Financial Advisor")
 
-# 50-30-20 Analysis
+# Logic 1: Expense Optimization (50-30-20 Analysis)
 needs = expenses
 needs_pct = (needs / income) * 100 if income > 0 else 0
 
@@ -49,21 +49,41 @@ highest_expense_val = expense_dict[highest_expense_name]
 
 if highest_expense_val > 0:
     reduction_saving = highest_expense_val * 0.15
-    # Compounding reduction savings over 10 years at 7%
     y = 10
     future_value_additional = (reduction_saving * 12) * (((1 + 0.07)**y - 1) / 0.07)
     
     insight_msg = (
-        f"**Insight:** Your highest expense is {highest_expense_name} at \${highest_expense_val:,.2f}/month. "
+        f"**Expense Optimization:** Your highest expense is {highest_expense_name} at \${highest_expense_val:,.2f}/month. "
         f"If you reduced this by 15% (saving \${reduction_saving:,.2f}) and invested it, "
         f"your portfolio could grow by an additional **\${future_value_additional:,.2f}** over 10 years "
-        f"(assuming a 7% annual return)."
+        f"(assuming a 7% annual return).\n\n"
     )
 else:
-    insight_msg = "**Insight:** Your expenses are very low! Keep focusing on growing your income and investments."
+    insight_msg = "**Expense Optimization:** Your expenses are very low! Keep focusing on growing your income and investments.\n\n"
 
-if needs_pct > 50:
-    insight_msg += f" Note: Your 'Needs' make up {needs_pct:.1f}% of your income, which is above the 50% rule of thumb."
+# Logic 2: Emergency Fund Optimization
+burn_rate = expenses
+if burn_rate > 0:
+    months_covered = emergency_fund / burn_rate
+    
+    if emergency_fund < (burn_rate * 3):
+        target = burn_rate * 3
+        insight_msg += (
+            f"**Emergency Fund Warning:** Your fund covers {months_covered:.1f} months of expenses (less than the recommended 3 months). "
+            f"Consider temporarily redirecting investments to build your cash buffer to at least **\${target:,.2f}**."
+        )
+    elif emergency_fund > (burn_rate * 6):
+        excess = emergency_fund - (burn_rate * 6)
+        insight_msg += (
+            f"**Emergency Fund Insight:** Your fund is over-capitalized ({months_covered:.1f} months covered). "
+            f"You could safely move **\${excess:,.2f}** into investments for better long-term yield."
+        )
+    else:
+        insight_msg += (
+            f"**Emergency Fund Insight:** Great job! You have a perfectly optimized safety net covering **{months_covered:.1f} months** of expenses."
+        )
+else:
+    insight_msg += "**Emergency Fund Insight:** You have no monthly expenses, meaning your emergency fund provides infinite runway!"
 
 st.info(insight_msg)
 st.divider()
