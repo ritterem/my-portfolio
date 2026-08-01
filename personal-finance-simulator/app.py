@@ -4,8 +4,8 @@ import plotly.express as px
 import numpy as np
 
 # Page Config
-st.set_page_config(page_title="Uni Student Finance Simulator", layout="wide")
-st.title("🚀 Uni Student Finance Simulator")
+st.set_page_config(page_title="Personal Finance Simulator", layout="wide")
+st.title("🚀 Personal Finance Simulator")
 
 # --- SIDEBAR INPUTS ---
 st.sidebar.header("Your Monthly Cashflow")
@@ -25,14 +25,6 @@ savings_rate = (savings / income) * 100 if income > 0 else 0
 cpf_contrib = income * 0.20 if income >= 750 else 0
 take_home = income - cpf_contrib
 
-# --- AI INSIGHT WIDGET ---
-st.markdown("### 🤖 AI Financial Advisor")
-st.info(
-    "**Insight:** If you reduced eating out by $50/month and invested it instead, "
-    "your investment portfolio could grow by approximately **$10,000** over 10 years "
-    "(assuming a 7% annual return)."
-)
-
 # --- DASHBOARD LAYOUT ---
 col1, col2 = st.columns(2)
 
@@ -43,6 +35,8 @@ with col1:
     growth = [investments * 12 * (((1 + 0.07)**y - 1) / 0.07) for y in years]
     df_growth = pd.DataFrame({"Year": years, "Portfolio Value": growth})
     fig1 = px.line(df_growth, x="Year", y="Portfolio Value", markers=True)
+    # Apply navy blue color scale
+    fig1.update_traces(line_color="#001F3F", marker=dict(color="#001F3F"))
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
@@ -51,7 +45,8 @@ with col2:
         "Category": ["CPF Contribution", "Take-Home Pay"],
         "Amount": [cpf_contrib, take_home]
     })
-    fig2 = px.pie(df_cpf, values="Amount", names="Category", hole=0.4)
+    fig2 = px.pie(df_cpf, values="Amount", names="Category", hole=0.4, 
+                  color_discrete_sequence=["#001F3F", "#3A6D8C"]) # Navy blue theme
     st.plotly_chart(fig2, use_container_width=True)
 
 st.divider()
@@ -68,3 +63,24 @@ with col4:
     st.subheader("🏦 Net Worth Snapshot")
     current_nw = emergency_fund + (investments * 12) # simplified year 1 snapshot
     st.metric(label="Estimated Year 1 Net Worth", value=f"${current_nw:,.2f}")
+
+st.divider()
+
+# --- AI INSIGHT WIDGET ---
+st.markdown("### 🤖 AI Financial Advisor")
+st.info(
+    "**Insight:** If you reduced eating out by $50/month and invested it instead, "
+    "your investment portfolio could grow by approximately **$10,000** over 10 years "
+    "(assuming a 7% annual return)."
+)
+
+# --- Watermark ---
+st.markdown(
+    """
+    <div style='text-align: center; margin-top: 50px;'>
+        <hr style='border: 1px solid #f0f4f8; margin-bottom: 10px;' />
+        <span style='color: grey; font-size: 0.8em;'>made by Ngai Jia Xuan</span>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)

@@ -41,7 +41,7 @@ export default function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-100">Featured Projects</h2>
         </div>
 
-        <Link href="/uni_finance_simulator.html" target="_blank" rel="noopener noreferrer" className="block outline-none" title="Open Interactive Simulator">
+        <Link href="https://github.com/ritterem/my-portfolio/tree/main/personal-finance-simulator" target="_blank" rel="noopener noreferrer" className="block outline-none" title="View Source Code">
           <div 
             ref={containerRef}
             className="group relative bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl p-8 md:p-10 overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer"
@@ -56,14 +56,14 @@ export default function Projects() {
             <div className="relative z-10 flex flex-col md:flex-row gap-8 mt-4 md:mt-0">
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">Uni Student Finance Simulator</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">Personal Finance Simulator</h3>
                   <span className="bg-blue-500/10 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide border border-blue-500/20">
                     Python / Streamlit
                   </span>
                 </div>
                 
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                  An interactive web application built with Streamlit and Plotly to help university students simulate their cashflow, predict 10-year investment growth, and analyze CPF contributions versus take-home pay. Features an AI Financial Advisor providing actionable insights.
+                  A modern, web-based simulator designed for university students. Helps users input monthly cashflow to calculate savings, estimate net worth, and project 10-year investment growth using Plotly visualizations. Features a built-in AI Financial Advisor.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -72,7 +72,7 @@ export default function Projects() {
                       <Calculator size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-200 mb-1">Cashflow & CPF</h4>
+                      <h4 className="font-semibold text-gray-200 mb-1">Cashflow Analytics</h4>
                       <p className="text-sm text-slate-400 leading-relaxed">Dynamic calculation of savings rates and Singapore CPF employee contributions.</p>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ export default function Projects() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-200 mb-1">Predictive Growth</h4>
-                      <p className="text-sm text-slate-400 leading-relaxed">Simulates and visualizes 10-year compounding investment portfolios using data analytics.</p>
+                      <p className="text-sm text-slate-400 leading-relaxed">Visualizes 10-year compounding investment portfolios using interactive donut and line charts.</p>
                     </div>
                   </div>
                 </div>
