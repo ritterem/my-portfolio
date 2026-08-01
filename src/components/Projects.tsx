@@ -41,7 +41,7 @@ export default function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-100">Featured Projects</h2>
         </div>
 
-        <Link href="https://github.com/ritterem/my-portfolio/tree/main/personal-finance-simulator" target="_blank" rel="noopener noreferrer" className="block outline-none" title="View Source Code">
+        <Link href="https://my-portfolio-siegqiercfktftmabsned5.streamlit.app/" target="_blank" rel="noopener noreferrer" className="block outline-none" title="Open Personal Finance Simulator">
           <div 
             ref={containerRef}
             className="group relative bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl p-8 md:p-10 overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer"
