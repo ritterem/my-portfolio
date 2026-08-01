@@ -69,8 +69,8 @@ st.divider()
 # --- AI INSIGHT WIDGET ---
 st.markdown("### 🤖 AI Financial Advisor")
 st.info(
-    "**Insight:** If you reduced eating out by $50/month and invested it instead, "
-    "your investment portfolio could grow by approximately **$10,000** over 10 years "
+    "**Insight:** If you reduced eating out by \\$50/month and invested it instead, "
+    "your investment portfolio could grow by approximately **\\$10,000** over 10 years "
     "(assuming a 7% annual return)."
 )
 
