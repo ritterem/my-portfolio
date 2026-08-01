@@ -88,13 +88,15 @@ with col1:
     
     cash_savings_growth = [savings * 12 * y for y in years]
     investment_growth = [investments * 12 * (((1 + 0.07)**y - 1) / 0.07) for y in years]
+    total_net_worth = [emergency_fund + c + i for c, i in zip(cash_savings_growth, investment_growth)]
     
     df_cash = pd.DataFrame({"Year": years, "Value": cash_savings_growth, "Type": "Cumulative Cash Savings"})
-    df_invest = pd.DataFrame({"Year": years, "Value": investment_growth, "Type": "Investment Growth"})
-    df_combined = pd.concat([df_cash, df_invest])
+    df_invest = pd.DataFrame({"Year": years, "Value": investment_growth, "Type": "Investment Portfolio"})
+    df_total = pd.DataFrame({"Year": years, "Value": total_net_worth, "Type": "Total Net Worth"})
+    df_combined = pd.concat([df_cash, df_invest, df_total])
     
-    fig1 = px.bar(df_combined, x="Year", y="Value", color="Type",
-                  color_discrete_sequence=["#3A6D8C", "#001F3F"], barmode="stack")
+    fig1 = px.line(df_combined, x="Year", y="Value", color="Type", markers=True,
+                  color_discrete_sequence=["#89A8B2", "#3A6D8C", "#001F3F"])
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
