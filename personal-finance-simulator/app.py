@@ -10,7 +10,7 @@ st.title("🚀 Personal Finance Simulator")
 # --- SIDEBAR INPUTS ---
 st.sidebar.header("Your Monthly Cashflow")
 income = st.sidebar.number_input("Monthly Income (\$)", value=1500)
-rent = st.sidebar.number_input("Rent (\$)", value=0)
+rent = st.sidebar.number_input("Rent/ Mortgage/ Loans (\$)", value=0)
 food = st.sidebar.number_input("Food (\$)", value=350)
 transport = st.sidebar.number_input("Transport (\$)", value=120)
 investments = st.sidebar.number_input("Investments (\$)", value=250)
@@ -43,7 +43,7 @@ st.markdown("### 🤖 AI Financial Advisor")
 needs = expenses
 needs_pct = (needs / income) * 100 if income > 0 else 0
 
-expense_dict = {"Rent": rent, "Food": food, "Transport": transport}
+expense_dict = {"Rent/ Mortgage/ Loans": rent, "Food": food, "Transport": transport}
 highest_expense_name = max(expense_dict, key=expense_dict.get)
 highest_expense_val = expense_dict[highest_expense_name]
 
@@ -100,16 +100,17 @@ with col1:
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
-    st.subheader("📊 Income Distribution")
-    df_cpf = pd.DataFrame({
-        "Category": ["Employee CPF", "Employer CPF", "Take-Home Pay"],
-        "Amount": [employee_cpf, employer_cpf, take_home]
-    })
-    # Remove 0 amounts for cleaner chart
-    df_cpf = df_cpf[df_cpf["Amount"] > 0]
+    st.subheader("📊 Expense & Allocation Breakdown")
+    expense_data = {
+        "Category": ["Rent/ Mortgage/ Loans", "Food", "Transport", "Investments", "Unallocated Savings"],
+        "Amount": [rent, food, transport, investments, savings]
+    }
+    df_expenses = pd.DataFrame(expense_data)
+    # Remove negative or 0 amounts for cleaner chart
+    df_expenses = df_expenses[df_expenses["Amount"] > 0]
     
-    fig2 = px.pie(df_cpf, values="Amount", names="Category", hole=0.4, 
-                  color_discrete_sequence=["#001F3F", "#3A6D8C", "#89A8B2"]) 
+    fig2 = px.pie(df_expenses, values="Amount", names="Category", hole=0.4, 
+                  color_discrete_sequence=["#001F3F", "#3A6D8C", "#89A8B2", "#B3C8CF", "#E5E1DA"]) 
     st.plotly_chart(fig2, use_container_width=True)
 
 st.divider()
