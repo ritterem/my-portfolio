@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FolderGit2, Home, BarChart3, ExternalLink } from "lucide-react";
+import { FolderGit2, Calculator, TrendingUp, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 export default function Projects() {
@@ -41,7 +41,7 @@ export default function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-100">Featured Projects</h2>
         </div>
 
-        <Link href="/hdb-resale.html" target="_blank" rel="noopener noreferrer" className="block outline-none">
+        <Link href="/uni_finance_simulator.py" target="_blank" rel="noopener noreferrer" className="block outline-none" title="View Python Source Code">
           <div 
             ref={containerRef}
             className="group relative bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl p-8 md:p-10 overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer"
@@ -56,34 +56,34 @@ export default function Projects() {
             <div className="relative z-10 flex flex-col md:flex-row gap-8 mt-4 md:mt-0">
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">HDB Resale Data Analytics</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">Uni Student Finance Simulator</h3>
                   <span className="bg-blue-500/10 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide border border-blue-500/20">
-                    Data Visualization
+                    Python / Streamlit
                   </span>
                 </div>
                 
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                  An interactive data visualization project analyzing Singapore's HDB resale market. It explores housing price trends, market indicators, and provides actionable insights into real estate valuations.
+                  An interactive web application built with Streamlit and Plotly to help university students simulate their cashflow, predict 10-year investment growth, and analyze CPF contributions versus take-home pay. Features an AI Financial Advisor providing actionable insights.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start gap-4 p-5 bg-slate-800/40 rounded-xl border border-slate-700/50 group-hover:bg-slate-800/80 transition-colors">
-                    <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400 shrink-0">
-                      <Home size={24} />
+                    <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400 shrink-0">
+                      <Calculator size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-200 mb-1">Real Estate Focus</h4>
-                      <p className="text-sm text-slate-400 leading-relaxed">Analyzing historical transaction data to uncover patterns in public housing affordability.</p>
+                      <h4 className="font-semibold text-gray-200 mb-1">Cashflow & CPF</h4>
+                      <p className="text-sm text-slate-400 leading-relaxed">Dynamic calculation of savings rates and Singapore CPF employee contributions.</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4 p-5 bg-slate-800/40 rounded-xl border border-slate-700/50 group-hover:bg-slate-800/80 transition-colors">
-                    <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400 shrink-0">
-                      <BarChart3 size={24} />
+                    <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400 shrink-0">
+                      <TrendingUp size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-200 mb-1">Market Indicators</h4>
-                      <p className="text-sm text-slate-400 leading-relaxed">Interactive charts visualizing volume, median prices, and geographical distribution.</p>
+                      <h4 className="font-semibold text-gray-200 mb-1">Predictive Growth</h4>
+                      <p className="text-sm text-slate-400 leading-relaxed">Simulates and visualizes 10-year compounding investment portfolios using data analytics.</p>
                     </div>
                   </div>
                 </div>
