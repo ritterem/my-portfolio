@@ -70,6 +70,8 @@ st.divider()
 
 # --- CPF BREAKDOWN SECTION ---
 st.subheader("🏛️ CPF Breakdown")
+if income < 750 and income > 500:
+    st.caption("Note: Your income falls below the standard full-contribution CPF threshold.")
 col_cpf1, col_cpf2, col_cpf3 = st.columns(3)
 col_cpf1.metric("Take-Home Pay", f"\${take_home:,.2f}")
 col_cpf2.metric("Employee CPF Deduction", f"\${employee_cpf:,.2f}")
@@ -80,14 +82,19 @@ st.divider()
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("📈 10-Year Investment Growth")
-    # Simulate 10 years of compounding at 7%
+    st.subheader("📈 10-Year Total Net Worth Growth")
+    # Simulate 10 years of compounding at 7% + cash savings
     years = np.arange(1, 11)
-    growth = [investments * 12 * (((1 + 0.07)**y - 1) / 0.07) for y in years]
-    df_growth = pd.DataFrame({"Year": years, "Portfolio Value": growth})
-    fig1 = px.line(df_growth, x="Year", y="Portfolio Value", markers=True)
-    # Apply navy blue color scale
-    fig1.update_traces(line_color="#001F3F", marker=dict(color="#001F3F"))
+    
+    cash_savings_growth = [savings * 12 * y for y in years]
+    investment_growth = [investments * 12 * (((1 + 0.07)**y - 1) / 0.07) for y in years]
+    
+    df_cash = pd.DataFrame({"Year": years, "Value": cash_savings_growth, "Type": "Cumulative Cash Savings"})
+    df_invest = pd.DataFrame({"Year": years, "Value": investment_growth, "Type": "Investment Growth"})
+    df_combined = pd.concat([df_cash, df_invest])
+    
+    fig1 = px.bar(df_combined, x="Year", y="Value", color="Type",
+                  color_discrete_sequence=["#3A6D8C", "#001F3F"], barmode="stack")
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
@@ -110,12 +117,15 @@ col3, col4 = st.columns(2)
 with col3:
     st.subheader("💰 Savings Rate")
     st.metric(label="Monthly Savings", value=f"\${savings:,.2f}")
-    st.progress(min(savings_rate / 100, 1.0))
-    st.caption(f"You are saving {savings_rate:.1f}% of your gross income.")
+    if savings < 0:
+        st.warning(f"You are currently running a deficit of \${abs(savings):,.2f} per month.")
+    else:
+        st.progress(min(savings_rate / 100, 1.0))
+        st.caption(f"You are saving {savings_rate:.1f}% of your gross income.")
 
 with col4:
     st.subheader("🏦 Net Worth Snapshot")
-    current_nw = emergency_fund + (investments * 12) # simplified year 1 snapshot
+    current_nw = emergency_fund + (investments * 12) + (savings * 12)
     st.metric(label="Estimated Year 1 Net Worth", value=f"\${current_nw:,.2f}")
 
 st.divider()
