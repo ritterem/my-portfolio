@@ -43,21 +43,21 @@ export default function Experience() {
     {
       company: "EMBED FINANCIAL GROUP HOLDINGS",
       role: "Intern",
-      period: "May 2026 - Jul 2026",
+      period: "May 2025 - Aug 2025",
       achievements: [
-        "Created charts and slides using PowerPoint for detailed visualisation of existing and new frameworks",
-        "Assess company grants and existing resources, building a safety financial net absorbing 90% company expenditure",
-        "Partook in a firm acquisition project, allowing for seamless integration of 26 new employees"
+        "Assessed company grants and financial resources to support funding of up to 90% of expenditure",
+        "Developed PowerPoint presentations to visualise business frameworks and strategic initiatives",
+        "Supported post-acquisition integration planning and coordination of 30 employees"
       ]
     },
     {
       company: "INLAND REVENUE AUTHORITY SINGAPORE (IRAS)",
-      role: "Temp Clerical Officer",
+      role: "Clerical Officer",
       period: "Mar 2024 - Jul 2024",
       achievements: [
-        "Resolved 1,200 suspended B1 tax forms within 4 months plus of working at IRAS",
-        "Completed correction of data error for 300+ SIA employers' income tax for YA2024",
-        "Created a Parenthood Tax Rebate checklist with colleagues, streamlining checking procedure by 70%"
+        "Processed 1,200 suspended tax forms within four months, ensuring accurate tax administration",
+        "Corrected data discrepancies across 300+ employer income tax records for YA2024",
+        "Co-developed a tax rebate checklist, improving verification efficiency by 70%"
       ]
     },
     {
@@ -65,8 +65,7 @@ export default function Experience() {
       role: "Customer Service Executive Intern",
       period: "Dec 2023 - Feb 2024",
       achievements: [
-        "Cleared issues and logged in call data for approximately 50+ callers regarding MOE's financial sector",
-        "Raised urgent issues to relevant authorities, providing resolution and support for 100% callers"
+        "Handled 50+ financial enquiries, escalating complex cases to relevant departments"
       ]
     }
   ];
