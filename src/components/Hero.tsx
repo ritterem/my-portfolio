@@ -40,10 +40,10 @@ export default function Hero() {
           Ngai Jia Xuan
         </h2>
         <h1 className="text-5xl md:text-7xl font-bold text-gray-100 mb-6 leading-tight opacity-0">
-          Driven by a passion for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">ESG</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">sustainable finance</span>.
+          Driven by a passion for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">finance</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">strategic problem-solving</span>.
         </h1>
         <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl opacity-0">
-          NUS Business Administration Finance penultimate year undergraduate seeking analytical, treasury, or middle-office roles. I aim to apply my skills in stakeholder analysis and strategic problem-solving to help corporations achieve their business and sustainability goals.
+          NUS Business Administration undergraduate double-majoring in Finance and Leadership & Human Capital Management, seeking analytical, treasury, or middle-office roles. I aim to apply my skills in financial analysis and data-driven decision-making to drive business outcomes.
         </p>
         
         <div className="opacity-0">
